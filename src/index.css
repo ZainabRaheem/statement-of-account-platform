@@ -120,12 +120,16 @@ nav {
   background-color: #ffffff;
   filter: drop-shadow(8px 0px 20px rgba(16, 24, 40, 0.1));
   border: 0;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .card-body.details {
   display: flex;
   flex-direction: column;
+}
+
+hr {
+  color: #f6f7f9;
 }
 
 .buttons {

@@ -36,16 +36,25 @@ const Form = () => {
         <div class="mb-4">
           <p className="details-paragraph">Statement type</p>
           <div className="detailss">
-            <div class="statement-option">
+            <div>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Print on Letterhead"
+              />
+            </div>
+            {/* <div class="input-search">
               <div class="search-icon">
                 <img src="../assets/checkbox.svg" alt="" />
               </div>
               <input
-                class="input-boxx mx-2"
+                class="input-boxx mx-3"
                 type="text"
                 placeholder="Print on A4"
               />
-            </div>
+            </div> */}
             <div>
               <input
                 type="email"

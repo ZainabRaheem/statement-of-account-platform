@@ -1,13 +1,198 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.logo {
+  padding: 1.5rem 4.5rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.card.login {
+  max-width: 1160px;
+  margin: auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 0;
+  filter: drop-shadow(0px 8px 20px rgba(16, 24, 40, 0.1));
 }
+
+.card-body {
+  width: 100%;
+  display: flex;
+  padding: 0;
+}
+
+.login-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 4.5rem;
+}
+
+.login-card-body {
+  background-color: #ffffff;
+  height: 100%;
+  padding: 2.5rem;
+}
+
+.title {
+  color: #002855;
+  font-size: 24px;
+}
+
+.paragraph {
+  color: #657889;
+  font-size: 14px;
+}
+
+.login-details {
+  color: #002855;
+  font-size: 16px;
+}
+
+.label {
+  color: #2e3337;
+}
+
+.input-box {
+  background-color: #ffffff;
+  border: 1px solid #aebfd1;
+  /* width: 85%; */
+}
+::placeholder {
+  color: #c6d3de;
+  font-size: 14px;
+}
+.input-box:focus {
+  outline: none;
+}
+
+.login-button {
+  background-color: #c6d3de;
+  color: #657889;
+  font-size: 18px;
+  font-weight: 500;
+  width: 85%;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  background: #ffffff;
+  filter: drop-shadow(8px 0px 20px rgba(16, 24, 40, 0.1));
+  border: 1px #ffffff solid;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  color: #002855;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.serial-number {
+  color: #657889;
+  font-size: 16px;
+}
+
+.log-out {
+  border: none;
+  outline: none;
+  background: none;
+  color: #002855;
+  background-color: #fbf3dd;
+  font-weight: 500;
+}
+
+.main {
+  max-width: 670px;
+  margin: auto;
+  background-color: #f8fbfd;
+}
+
+.statement-generator {
+  font-size: 20px;
+  color: #002855;
+}
+
+.card.details {
+  background-color: #ffffff;
+  filter: drop-shadow(8px 0px 20px rgba(16, 24, 40, 0.1));
+  border: 0;
+  border-radius: 15px;
+}
+
+.card-body.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  color: #657889;
+}
+
+.buttonn {
+  border: none;
+  outline: none;
+  background: none;
+  border-radius: 4px;
+  color: #657889;
+  padding: 0.5rem 2rem;
+}
+
+.generate {
+  font-weight: 500;
+  background-color: #ebedef;
+}
+
+.clear {
+  font-weight: 500;
+  border: 1px solid #ebedef;
+}
+
+.details-paragraph {
+  font-size: 14px;
+  color: #2e3337;
+  font-weight: 500;
+}
+
+.detailss {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.form-label {
+  font-size: 14px;
+  color: #657889;
+}
+
+.fetch-button {
+  background-color: #e8effb;
+  color: #657889;
+  font-size: 14px;
+  width: 100%;
+}
+
+.input-search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid red;
+}
+
+.input-boxx {
+  outline: none;
+  border: none;
+  /* width: 40%; */
+}
+
+/* .statement-type {
+  border: 0.5px solid #aebfd1;
+  padding: 0 1rem;
+} */

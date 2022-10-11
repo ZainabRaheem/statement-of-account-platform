@@ -1,12 +1,13 @@
 import "./App.css";
 import "./index.css";
-// import Login from "./Components/Login";
-import CustomerDetails from "./Components/CustomerDetails";
+import {Outlet} from 'react-router-dom';
+import NavBar from "./Components/NavBar";
 
 function App() {
   return (
     <div className="App">
-      <CustomerDetails />
+       <NavBar />
+        <Outlet />
     </div>
   );
 }

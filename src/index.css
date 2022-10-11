@@ -62,12 +62,24 @@
   outline: none;
 }
 
-.login-button {
+#login-Button-disabled {
   background-color: #c6d3de;
-  color: #657889;
+  color: black;
   font-size: 18px;
   font-weight: 500;
-  width: 85%;
+  height: 40px;
+  padding: 2px;
+  margin-top: 20px;
+}
+
+#login-Button-active {
+  background-color: #ddad31;
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+  height: 40px;
+  padding: 2px;
+  margin-top: 20px;
 }
 
 nav {
@@ -196,3 +208,37 @@ nav {
   border: 0.5px solid #aebfd1;
   padding: 0 1rem;
 } */
+
+#error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.passwordEye {
+  position: fixed;
+  z-index: 999;
+  top: 50%;
+  left: 87%;
+}
+
+#exampleModal{
+  height: 350px;
+  width: 300px;
+  top: 35%;
+  left:  40%;
+  background-color: #fff6f9;
+  opacity: 0.95;
+  text-align: center;
+}
+
+
+#modalBody {
+  background-color: #fff6f9;
+  opacity: 0.95;
+  border: none;
+  
+}
+

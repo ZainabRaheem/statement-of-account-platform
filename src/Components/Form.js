@@ -36,7 +36,7 @@ const Form = () => {
         <div class="mb-4">
           <p className="details-paragraph">Statement type</p>
           <div className="detailss">
-            <div class="input-search">
+            <div class="statement-option">
               <div class="search-icon">
                 <img src="../assets/checkbox.svg" alt="" />
               </div>

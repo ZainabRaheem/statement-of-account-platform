@@ -139,7 +139,7 @@ const LoginPage = () => {
         </div>
       </div>
 
-      <ResponseModal modalState={responseModal}/>
+     {responseModal && <ResponseModal modalState={responseModal}/> }
     </>
   );
 };

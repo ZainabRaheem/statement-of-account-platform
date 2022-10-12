@@ -1,48 +1,56 @@
 import { useEffect, useState } from "react";
 import { dispatch } from "../redux/store";
-import   { setError, UserLogin } from "../redux/features/Users/auth";
+import { setError, UserLogin } from "../redux/features/Users/auth";
 import { useSelector } from "react-redux";
-import {FiEyeOff, FiEye} from 'react-icons/fi'
-import ResponseModal from "../Components/ResponseModal";
-
+import { FiEyeOff, FiEye } from "react-icons/fi";
+import ResponseModal from "../Components/shared/ResponseModal";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  const {responseModal} = useSelector(state => state.auth);
+  const { responseModal, token, user } = useSelector((state) => state.auth);
+  const nav = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState("");
+  const [loginToken, setLoginToken] = useState("");
   const [passwordType, setPasswordType] = useState("password");
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   useEffect(() => {
-    if (token.length !== 10 || password.length < 1 || userName.length < 1) {
+    if (
+      loginToken.length !== 10 ||
+      password.length < 1 ||
+      userName.length < 1
+    ) {
       setButtonDisabled(true);
     } else {
       setButtonDisabled(false);
     }
-  }, [password, userName, token]);
+  }, [password, userName, loginToken]);
 
   const SetPasswordTypeHandler = () => {
     if (passwordType === "password") {
-      console.log("enetered");
       setPasswordType("text");
     } else {
       setPasswordType("password");
     }
   };
 
-   const LoginHandler = (e) => {
+  const LoginHandler = (e) => {
     e.preventDefault();
 
     const formBody = {
       userName,
       password,
-      token,
+      loginToken,
     };
     dispatch(UserLogin(formBody));
   };
 
- 
+  useEffect(() => {
+    if (token && user) {
+      nav("/dashboard");
+    }
+  }, [token, user]);
 
   return (
     <>
@@ -61,24 +69,21 @@ const LoginPage = () => {
 
               <form className="login-form">
                 <div className="form-group login-details">
-                  <label className="label" htmlFor="username">
-                    Username
-                  </label>
+                  <label className="label">Username</label>
                   <input
                     type="text"
                     name="username"
                     className="form-control input-box"
                     placeholder="Enter your username"
                     id="username"
+                    value={userName}
                     onChange={(e) => setUserName(e.target.value)}
                     required
                   />
                 </div>
 
                 <div className="form-group login-details">
-                  <label className="label">
-                    Password
-                  </label>
+                  <label className="label">Password</label>
 
                   <input
                     type={passwordType}
@@ -86,6 +91,7 @@ const LoginPage = () => {
                     className="form-control input-box"
                     placeholder="Enter your password"
                     id="password"
+                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
@@ -106,16 +112,15 @@ const LoginPage = () => {
                 </div>
 
                 <div className="form-group login-details">
-                  <label className="label">
-                    Token
-                  </label>
+                  <label className="label">Token</label>
                   <input
                     type="text"
                     name="token"
                     className="form-control input-box"
                     placeholder="Enter your token"
                     id="token"
-                    onChange={(e) => setToken(e.target.value)}
+                    value={loginToken}
+                    onChange={(e) => setLoginToken(e.target.value)}
                     required
                   />
                 </div>
@@ -139,7 +144,7 @@ const LoginPage = () => {
         </div>
       </div>
 
-     {responseModal && <ResponseModal modalState={responseModal}/> }
+      <ResponseModal />
     </>
   );
 };

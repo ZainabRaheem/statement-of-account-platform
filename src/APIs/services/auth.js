@@ -9,6 +9,10 @@ class Auth {
     return this.request.post("", data)
   }
 
+  async FetchDetails(data){
+    return this.request.post("", data)
+  }
+
  
 }
 

@@ -1,13 +1,9 @@
+import { useEffect, useState } from "react";
 import { setResponseModal } from "../redux/features/Users/auth";
 import { dispatch } from "../redux/store";
+import { IoMdClose } from "react-icons/io";
 
 const ResponseModal = (props) => {
-  window.onclick = function () {
-    if (props.modalState) {
-      dispatch(setResponseModal(false));
-    }
-  };
-
   return (
     <>
       <div
@@ -19,7 +15,7 @@ const ResponseModal = (props) => {
         aria-hidden="true"
         style={
           props.modalState
-            ? { display: "block", "padding-right": "17px" }
+            ? { display: "block", paddingRight: "17px" }
             : { display: "none" }
         }
         aria-modal={props.modalState ? "true" : "false"}
@@ -27,11 +23,16 @@ const ResponseModal = (props) => {
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="">
             <div className="modal-body" id="modalBody">
-              
+              <div>
+                <img src="assets/error.gif" id="modalGif" />
 
                 <p>Login Failed</p>
 
-                <p>Combination of Username and Password is Incorrect, <br /> Pleases try again</p>
+                <p>
+                  Combination of Username and Password is Incorrect, <br />{" "}
+                  Pleases try again
+                </p>
+              </div>
             </div>
           </div>
         </div>

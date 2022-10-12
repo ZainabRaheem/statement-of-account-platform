@@ -228,21 +228,27 @@ hr {
   left: 87%;
 }
 
-#exampleModal{
-  height: 350px;
-  width: 300px;
-  top: 35%;
-  left:  40%;
-  background-color: #fff6f9;
-  opacity: 0.95;
+#modalBody {
+  height: 500px;
+  width: 484px;
+  top: 22%;
+  background-color: #fdfdfd;
+  opacity: 1;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  box-shadow: #ebedef;
+  border-radius: 20px;
+
 }
 
+#modalGif {
+  height: 300px;
+  width: 300px;
+}
 
-#modalBody {
-  background-color: #fff6f9;
-  opacity: 0.95;
-  border: none;
-  
+#modalBody p{
+  font-weight: 700;
 }
 

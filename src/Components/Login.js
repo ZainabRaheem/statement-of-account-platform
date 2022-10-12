@@ -10,8 +10,8 @@ const Login = () => {
           <div class="login-card">
             <div class="login-card-body">
               <div class="login-card-title">
-                <h3 class="title">Statement of Account Platform</h3>
-                <p class="paragraph">Enter your log in credentials</p>
+                <h3 class="login-title">Statement of Account Platform</h3>
+                <p class="login-paragraph">Enter your log in credentials</p>
               </div>
 
               <form class="login-form">

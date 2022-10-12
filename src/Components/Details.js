@@ -7,8 +7,8 @@ const Details = () => {
         <Form />
         <hr />
         <div className="buttons px-4 pt-3 pb-4">
-          <button className="buttonn generate">Generate Statement</button>
-          <button className="buttonn clear">Clear All</button>
+          <button className="button generate">Generate Statement</button>
+          <button className="button clear">Clear All</button>
         </div>
       </div>
     </div>

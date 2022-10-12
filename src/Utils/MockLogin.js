@@ -1,15 +1,18 @@
-import { AxiosError } from "axios"
 
 const MockLogin = (data) => {
-    if(data.userName !== 'BossMan'){
-        throw new Error("User not found")
-    }
-    else if(data.password !== "123456"){
-        throw new Error("Password is Incorrect")
-    }
-    else {
-        return {token: "djbdnsdksd", user:"BossMan"}
-    }
-}
+  if (data.userName !== "BossMan" || data.password !== "123456") {
+    throw new Error("Combination of password and UserName is Incorrect");
+  }
+  else {
+    return {
+      token: "djbdnsdksd",
+      data: {
+        userName: "SN03039",
+        firstName: "Boss",
+        lastName: "Man",
+      },
+    };
+  }
+};
 
 export default MockLogin;

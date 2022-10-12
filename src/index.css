@@ -123,7 +123,12 @@ nav {
 }
 
 .statement-generator {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
   font-size: 20px;
+  line-height: 23px;
+
   color: #002855;
 }
 
@@ -159,6 +164,7 @@ nav {
 .generate {
   font-weight: 500;
   background-color: #ebedef;
+  margin-bottom: 0.5rem;
 }
 
 .clear {
@@ -178,6 +184,16 @@ nav {
   align-items: center;
   gap: 0.3rem;
 }
+.equal-padding {
+  padding: 24px 40px !important;
+}
+.form-card {
+  min-width: 48.625rem !important;
+  background-color: #ffffff;
+  filter: drop-shadow(8px 0px 20px rgba(16, 24, 40, 0.1));
+  border: 0;
+  border-radius: 10px;
+}
 
 .form-label {
   font-size: 14px;
@@ -192,6 +208,40 @@ nav {
   color: #c6d3de;
 }
 
+.form-check {
+  border: 0.5px solid #aebfd1;
+  border-radius: 4px;
+  width: 35%;
+  padding: 0.5rem 0.5rem 0 3rem;
+}
+
+.date-range {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.form-date {
+  width: 115%;
+}
+
+.charge-type {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.form-check.charge {
+  border: 0.5px solid #aebfd1;
+  border-radius: 4px;
+  width: 30%;
+  padding: 0.5rem 0.5rem 0 3rem;
+}
+
+.form-label.charge {
+  font-size: 12px;
+}
+
 .fetch-button {
   background-color: #e8effb;
   color: #002855;
@@ -199,23 +249,17 @@ nav {
   width: 100%;
 }
 
-.statement-option {
+.statement-type {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid red;
+  gap: 1.5rem;
 }
 
 .input-boxx {
   outline: none;
   border: none;
-  /* width: 40%; */
 }
-
-/* .statement-type {
-  border: 0.5px solid #aebfd1;
-  padding: 0 1rem;
-} */
 
 #error-page {
   display: flex;
@@ -228,22 +272,68 @@ nav {
 .passwordEye {
   position: fixed;
   z-index: 999;
-  top: 50%;
+  top: 53%;
   left: 87%;
 }
 
-#exampleModal {
-  height: 350px;
-  width: 300px;
-  top: 35%;
-  left: 40%;
-  background-color: #fff6f9;
-  opacity: 0.95;
-  text-align: center;
-}
 
 #modalBody {
-  background-color: #fff6f9;
-  opacity: 0.95;
-  border: none;
+  height: 500px;
+  width: 484px;
+  top: 22%;
+  background-color: #fdfdfd;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  box-shadow: #ebedef;
+  border-radius: 20px;
+}
+
+#modalGif {
+  height: 300px;
+  width: 300px;
+}
+
+#modalBody p {
+  font-weight: 700;
+  font-size: large;
+}
+/* for the detail component */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px 40px;
+  gap: 10px;
+  background: #f6f7f9;
+  border: none !important;
+}
+.card-title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #2e3337;
+}
+.card-body{
+  justify-content: space-between;
+}
+.inner-card-title small {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #657889;
+}
+.inner-card-title div {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  color: #657889;
+  white-space: nowrap;
 }

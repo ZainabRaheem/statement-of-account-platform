@@ -61,12 +61,24 @@
   outline: none;
 }
 
-.login-button {
+#login-Button-disabled {
   background-color: #c6d3de;
-  color: #657889;
+  color: black;
   font-size: 18px;
   font-weight: 500;
-  width: 85%;
+  height: 40px;
+  padding: 2px;
+  margin-top: 20px;
+}
+
+#login-Button-active {
+  background-color: #ddad31;
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+  height: 40px;
+  padding: 2px;
+  margin-top: 20px;
 }
 
 nav {
@@ -187,43 +199,51 @@ nav {
   width: 100%;
 }
 
-.statement-type {
+.statement-option {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  justify-content: space-between;
+  border: 1px solid red;
 }
 
-.form-check {
+.input-boxx {
+  outline: none;
+  border: none;
+  /* width: 40%; */
+}
+
+/* .statement-type {
   border: 0.5px solid #aebfd1;
-  border-radius: 4px;
-  width: 35%;
-  padding: 0.5rem 0.5rem 0 3rem;
-}
+  padding: 0 1rem;
+} */
 
-.date-range {
+#error-page {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  justify-content: center;
+  width: 100%;
 }
 
-.form-date {
-  width: 115%;
+.passwordEye {
+  position: fixed;
+  z-index: 999;
+  top: 50%;
+  left: 87%;
 }
 
-.charge-type {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
+#exampleModal {
+  height: 350px;
+  width: 300px;
+  top: 35%;
+  left: 40%;
+  background-color: #fff6f9;
+  opacity: 0.95;
+  text-align: center;
 }
 
-.form-check.charge {
-  border: 0.5px solid #aebfd1;
-  border-radius: 4px;
-  width: 30%;
-  padding: 0.5rem 0.5rem 0 3rem;
-  /* background-color: red; */
-}
-
-.form-label.charge {
-  font-size: 12px;
+#modalBody {
+  background-color: #fff6f9;
+  opacity: 0.95;
+  border: none;
 }

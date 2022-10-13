@@ -28,7 +28,9 @@ const NavBar = () => {
                 <span className="name">
                   {user ? user.firstName + user.lastName : ""}
                 </span>
-                <span className="serial-number">{user ? user.userName : ""}</span>
+                <span className="serial-number">
+                  {user ? user.userName : ""}
+                </span>
               </div>
               {/* left padding not working */}
               <img
@@ -37,7 +39,10 @@ const NavBar = () => {
                 alt="profile picture"
               />
             </div>
-            <button className="log-out px-5 py-2" onClick={() => LogoutHandler()}>
+            <button
+              className="log-out px-5 py-2"
+              onClick={() => LogoutHandler()}
+            >
               Log out
             </button>
           </div>

@@ -1,4 +1,3 @@
-import { AxiosInstance } from "axios";
 
 import api from "../axios";
 
@@ -10,6 +9,10 @@ class Auth {
   }
 
   async FetchDetails(data){
+    return this.request.post("", data)
+  }
+
+  async GenerateStatement(data){
     return this.request.post("", data)
   }
 

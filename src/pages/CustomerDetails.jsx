@@ -12,6 +12,7 @@ const CustomerDetails = () => {
       nav("/")
     }
   }, [])
+  
   return (
     <div className="customer-details">
       <div className="main">
@@ -22,11 +23,7 @@ const CustomerDetails = () => {
         <div className="form-card details">
           <div className="card-body details">
             <Form />
-            <hr />
-            <div className="buttons px-4 pt-3 pb-4">
-              <button className="button generate">Generate Statement</button>
-              <button className="button clear">Clear All</button>
-            </div>
+           
           </div>
         </div>
       </div>

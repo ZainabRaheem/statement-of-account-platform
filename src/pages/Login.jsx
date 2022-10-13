@@ -133,7 +133,7 @@ const LoginPage = () => {
                       ? "login-Button-disabled"
                       : "login-Button-active"
                   }
-                  className="btn btn-disabled text-align-center w-100"
+                  className="btn btn-disabled text-align-center w-100 mt-2"
                   onClick={(e) => LoginHandler(e)}
                 >
                   LOG IN

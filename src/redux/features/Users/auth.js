@@ -4,16 +4,17 @@ import { ErrorHandler } from "../../../Utils/Error";
 import { dispatch } from "../../store";
 import MockLogin from "../../../Utils/MockLogin";
 import MockFetchDetails from "../../../Utils/MockFetchDetails";
+import MockGenerateStatement from "../../../Utils/MockGenerateStatement";
 
 const initialState = {
   response: {
     type: null,
-    message : null,
-    title : null
+    message: null,
+    title: null,
   },
   token: null,
   user: null,
-  acctDetails : null,
+  acctDetails: null,
 };
 
 export const UserLogin = (data) => async () => {
@@ -22,7 +23,13 @@ export const UserLogin = (data) => async () => {
     const res = MockLogin(data);
     dispatch(setAuthenticatedState(res));
   } catch (err) {
-    dispatch(setResponse({type: "error", message: err.message, title: "Login Failed"}));
+    dispatch(
+      setResponse({
+        type: "error",
+        message: err.message,
+        title: "Login Failed",
+      })
+    );
     //dispatch(setError(ErrorHandler(err)))
   }
 };
@@ -30,11 +37,37 @@ export const UserLogin = (data) => async () => {
 export const FetchDetails = (data) => async () => {
   try {
     //const res = await AuthService.FetchDetails(data);
-     const res = MockFetchDetails(data);
-     dispatch(setAcctDetails(res[0]));
+    const res = MockFetchDetails(data);
+    dispatch(setAcctDetails(res[0]));
   } catch (err) {
     dispatch(setError(err.message));
-    dispatch(setResponse({type: "error", message: err.message, title: "Error"}));
+    dispatch(
+      setResponse({ type: "error", message: err.message, title: "Error" })
+    );
+  }
+};
+
+export const GenerateStatement = (data) => async () => {
+  try {
+    //const res = await AuthService.GenerateStatement(data);
+    const res = MockGenerateStatement(data);
+    console.log(res);
+    dispatch(
+      setResponse({
+        type: "success",
+        message: "Statement Generated Successfully",
+        title: "Success",
+      })
+    );
+  } catch (err) {
+    dispatch(setError(err.message));
+    dispatch(
+      setResponse({
+        type: "error",
+        message: err.message,
+        title: "InSuffcient Funds",
+      })
+    );
   }
 };
 
@@ -47,19 +80,24 @@ const AuthSlice = createSlice({
       state.error = action.payload;
     },
     setResponse: (state, action) => {
-      state.response = {...action.payload}
+      state.response = { ...action.payload };
     },
     setAuthenticatedState: (state, action) => {
       state.token = action.payload.token;
       state.user = action.payload.data;
     },
-    setAcctDetails : (state, action) => {
-      state.acctDetails = action.payload
-    }
+    setAcctDetails: (state, action) => {
+      state.acctDetails = action.payload;
+    },
   },
 });
 
-export const { setError, setResponse, setAuthenticatedState, reset, setAcctDetails } =
-  AuthSlice.actions;
+export const {
+  setError,
+  setResponse,
+  setAuthenticatedState,
+  reset,
+  setAcctDetails,
+} = AuthSlice.actions;
 
 export default AuthSlice.reducer;

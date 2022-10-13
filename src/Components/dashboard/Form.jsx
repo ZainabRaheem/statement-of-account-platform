@@ -1,135 +1,116 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { FetchDetails, setAcctDetails } from "../../redux/features/Users/auth";
+import {
+  GenerateStatement,
+} from "../../redux/features/Users/auth";
 import { dispatch } from "../../redux/store";
-import Details from "./Details";
+import GetCustomerDetails from "./GetCustomerDetails";
 
 const Form = () => {
   const { acctDetails } = useSelector((state) => state.auth);
   const [accountNo, setAccountNo] = useState("");
-  const [fetchButtonState, setFetchButtonState] = useState(true);
-  const [showDropDown, setShowDropDown] = useState( false);
+  const [statementType, setStatementType] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [chargeCustomer, setChargeCustomer] = useState("");
+  const [buttonDisabled, setButtonDisabled] = useState(true);
 
-  const AccountNoRegex = /^\d{10}$/;
+  const [dateError, setDateError] = useState(false);
+
   useEffect(() => {
-    if (AccountNoRegex.test(accountNo) && accountNo.length === 10) {
-      setFetchButtonState(false);
+    if (endDate !== "" && endDate < startDate) {
+      setDateError(true);
     } else {
-      setFetchButtonState(true);
+      setDateError(false);
     }
-  }, [accountNo]);
+  }, [startDate, endDate]);
 
-  const FetchDetailsHandler = (e) => {
+  useEffect(() => {
+    if (
+      accountNo !== "" &&
+      statementType !== "" &&
+      startDate !== "" &&
+      endDate !== "" &&
+      !dateError &&
+      chargeCustomer !== ""
+    ) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [accountNo, startDate, endDate, statementType, dateError, chargeCustomer]);
+
+  const GenerateStatementHandler = (e) => {
     e.preventDefault();
 
-    dispatch(FetchDetails(accountNo));
+    const formBody = {
+      accountNo,
+      statementType,
+      startDate,
+      endDate,
+      chargeCustomer,
+    };
+
+    dispatch(GenerateStatement(formBody));
   };
 
-  useEffect(() => {
-    if (acctDetails !== null) {
-      setShowDropDown(true);
-    }
-  }, [acctDetails]);
-
-  const ClearFieldHandler = (e) => {
-    e.preventDefault()
-    dispatch(setAcctDetails(null))
-    setShowDropDown(false)
-    setAccountNo("")
-  }
+  const ClearData = (e) => {
+    e.preventDefault();
+    //the only solution i can think of now...
+    window.location.reload();
+  };
 
   return (
     <div className="form pt-4 pb-2">
       <form>
-        <div className="mb-2  px-2 equal-padding ">
-          <p className="details-paragraph">
-            Enter a valid account number to generate an account statement
-          </p>
-
-          <div className="details account-number">
-            <div>
-              <div id="emailHelp" className="form-text form-label">
-                Account number
-              </div>
-              <input
-                type="text"
-                className="form-control form-input"
-                placeholder="Enter your account number"
-                id="username"
-                value={accountNo}
-                onChange={(e) => setAccountNo(e.target.value)}
-              />
-            </div>
-
-            <div className="mt-2">
-              <button
-                className="btn  py-2 px-4 fetch-button"
-                disabled={fetchButtonState}
-                onClick={(e) => acctDetails ? ClearFieldHandler(e) : FetchDetailsHandler(e)}
-                id={
-                  fetchButtonState
-                    ? "login-Button-disabled"
-                    : "login-Button-active"
-                }
-                style={acctDetails ? {backgroundColor: "white", border: "1px solid black"} : {}}
-              >
-                {acctDetails ?"Clear Field" : "Fetch details"}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <Details
-          className="px-2 "
-          showDropdown={showDropDown}
+        <GetCustomerDetails
           acctDetails={acctDetails}
+          accountNo={accountNo}
+          setAccountNo={setAccountNo}
         />
 
         <div className="mb-2  px-2 equal-padding">
           <p className="details-paragraph">Statement type</p>
 
           <div className="details statement-type">
-            <div className="form-check">
+            <div className="form-check form-check-inline">
               <input
                 className="form-check-input"
                 type="radio"
-                name="Print on A4"
+                name="radioGroup"
                 id="Print on A4"
+                value="Print on A4"
+                onChange={(e) => setStatementType(e.target.value)}
               />
-              <label
-                className="form-check-label form-label"
-                htmlFor="Print on A4"
-              >
+              <label className="form-check-label" htmlFor="Print on A4">
                 Print on A4
               </label>
             </div>
 
-            <div className="form-check">
+            <div className="form-check form-check-inline">
               <input
                 className="form-check-input"
                 type="radio"
-                name="Print on Letterhead"
+                name="radioGroup"
                 id="Print on Letterhead"
+                value="Print on Letterhead"
+                onChange={(e) => setStatementType(e.target.value)}
               />
-              <label
-                className="form-check-label form-label"
-                htmlFor="Print on Letterhead"
-              >
+              <label className="form-check-label" htmlFor="Print on Letterhead">
                 Print on Letterhead
               </label>
             </div>
 
-            <div className="form-check email">
+            <div className="form-check form-check-inline">
               <input
                 className="form-check-input"
                 type="radio"
-                name="Send via Email"
+                name="radioGroup"
                 id="Send via Email"
+                value="Send via Email"
+                onChange={(e) => setStatementType(e.target.value)}
               />
-              <label
-                className="form-check-label form-label"
-                htmlFor="Send via Email"
-              >
+              <label className="form-check-label" htmlFor="Send via Email">
                 Send via Email
               </label>
             </div>
@@ -140,8 +121,8 @@ const Form = () => {
           <p className="details-paragraph">Date range</p>
 
           <div className="details date-range">
-            <div>
-              <div id="emailHelp" className="form-text form-label">
+            <div className="form-group">
+              <div id="emailHelp" className="form-label">
                 Start Date
               </div>
               <input
@@ -149,33 +130,47 @@ const Form = () => {
                 name="start"
                 className="form-control form-date"
                 id="start"
+                onChange={(e) => setStartDate(e.target.value)}
               />
+              {dateError && (
+                <small className=" text-white" style={{ fontSize: "12px" }}>
+                  hidden text
+                </small>
+              )}
             </div>
 
-            <div>
-              <div id="emailHelp" className="form-text form-label">
+            <div className="form-group">
+              <div id="emailHelp" className="form-label">
                 End Date
               </div>
               <input
                 type="date"
                 name="end"
                 className="form-control form-date"
-                id="end"
+                id={dateError ? "endDate" : ""}
+                onChange={(e) => setEndDate(e.target.value)}
               />
+              {dateError && (
+                <small className="text-danger" style={{ fontSize: "12px" }}>
+                  End date can't be earlier than start date
+                </small>
+              )}
             </div>
           </div>
         </div>
 
-        <div className="mb-2 px-2 equal-padding">
+        <div className="mb-3 px-2  equal-padding">
           <p className="details-paragraph">Charge type</p>
 
           <div className="details charge-type">
-            <div className="form-check charge">
+            <div className="form-check form-check-inline">
               <input
                 className="form-check-input"
                 type="radio"
-                name="Charge customer"
+                name="chargeButtons"
                 id="Charge customer"
+                value={"Yes"}
+                onChange={(e) => setChargeCustomer(e.target.value)}
               />
               <label
                 className="form-check-label form-label charge"
@@ -185,12 +180,14 @@ const Form = () => {
               </label>
             </div>
 
-            <div className="form-check charge">
+            <div className="form-check form-check-inline">
               <input
                 className="form-check-input"
                 type="radio"
-                name="Do not charge customer"
+                name="chargeButtons"
                 id="Do not charge customer"
+                value={"No"}
+                onChange={(e) => setChargeCustomer(e.target.value)}
               />
               <label
                 className="form-check-label form-label charge"
@@ -200,6 +197,22 @@ const Form = () => {
               </label>
             </div>
           </div>
+        </div>
+        <hr />
+        <div className="buttons equal-padding">
+          <button
+            className="button generate"
+            id={
+              buttonDisabled ? "login-Button-disabled" : "login-Button-active"
+            }
+            disabled={buttonDisabled}
+            onClick={(e) => GenerateStatementHandler(e)}
+          >
+            Generate Statement
+          </button>
+          <button className="button clear" onClick={(e) => ClearData(e)}>
+            Clear All
+          </button>
         </div>
       </form>
     </div>

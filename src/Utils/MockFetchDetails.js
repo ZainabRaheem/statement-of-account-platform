@@ -8,7 +8,7 @@ const MockFetchDetails = (acctNo) => {
   }
 };
 
-const AcctData = [
+export const AcctData = [
   {
     acctNo: "2012345678",
     acctName: "Ifunanya Jennifer Ofodu",
